@@ -1,13 +1,16 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_strlen.s                                        :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: eros-gir <eros-gir@student.42barcelona.    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/31 16:07:07 by eros-gir          #+#    #+#              #
-#    Updated: 2024/08/31 16:26:32 by eros-gir         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+global ft_strlen
 
+section .text
 
+ft_strlen:
+    xor rcx, rcx
+
+.loop:
+    cmp byte [rdi + rcx], 0
+    je .done
+    inc rcx
+    jmp .loop
+
+.done:
+    mov rax, rcx
+    ret

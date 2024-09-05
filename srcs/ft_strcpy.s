@@ -1,13 +1,20 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_strcpy.s                                        :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: eros-gir <eros-gir@student.42barcelona.    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/31 16:07:15 by eros-gir          #+#    #+#              #
-#    Updated: 2024/08/31 16:26:36 by eros-gir         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+global  ft_strcpy
 
+section .text
 
+ft_strcpy:
+    mov rax, rdi
+    mov rbx, rdi
+
+.loop:
+    mov al, [rsi]
+    mov [rdi], al
+    test al, al
+    je .done
+    inc rsi
+    inc rdi
+    jmp .loop
+
+.done:
+    mov rax, rbx
+    ret

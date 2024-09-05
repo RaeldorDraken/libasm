@@ -6,7 +6,7 @@
 #    By: eros-gir <eros-gir@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/31 16:00:37 by eros-gir          #+#    #+#              #
-#    Updated: 2024/08/31 17:16:19 by eros-gir         ###   ########.fr        #
+#    Updated: 2024/09/05 12:37:31 by eros-gir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ NAME =	libasm.a
 
 DIR  =	./srcs/
 
-SRCS =	$(DIR)ft_strlen.s #\
-		$(DIR)ft_strcpy.s \
+SRCS =	$(DIR)ft_strlen.s \
+		$(DIR)ft_strcpy.s #\
 		$(DIR)ft_strcmp.s \
 		$(DIR)ft_write.s \
 		$(DIR)ft_read.s \

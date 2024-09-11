@@ -4,17 +4,16 @@ section .text
 
 ft_strcpy:
     mov rax, rdi
-    mov rbx, rdi
+    xor rcx, rcx
 
 .loop:
-    mov al, [rsi]
-    mov [rdi], al
+    mov al, BYTE [rsi + rcx]
+    mov BYTE [rdi + rcx], al
     test al, al
     je .done
-    inc rsi
-    inc rdi
+    inc rcx
     jmp .loop
 
 .done:
-    mov rax, rbx
+    mov rax, rdi
     ret

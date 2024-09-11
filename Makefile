@@ -6,7 +6,7 @@
 #    By: eros-gir <eros-gir@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/31 16:00:37 by eros-gir          #+#    #+#              #
-#    Updated: 2024/09/05 12:37:31 by eros-gir         ###   ########.fr        #
+#    Updated: 2024/09/11 18:25:52 by eros-gir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,11 @@ NAME =	libasm.a
 DIR  =	./srcs/
 
 SRCS =	$(DIR)ft_strlen.s \
-		$(DIR)ft_strcpy.s #\
-		$(DIR)ft_strcmp.s \
+		$(DIR)ft_strcpy.s \
+		$(DIR)ft_strdup.s \
+		#$(DIR)ft_strcmp.s \
 		$(DIR)ft_write.s \
-		$(DIR)ft_read.s \
-		$(DIR)ft_strdup.s
+		$(DIR)ft_read.s
 
 HDRS =	libasm.h
 
@@ -33,7 +33,7 @@ NFLAGS =	-f elf64
 
 CC =	gcc
 
-CFLAGS =	-Wall -Wextra -Werror
+CFLAGS =	-no-pie -Wall -Wextra -Werror
 
 %.o: %.s $(HDRS)
 	$(NASM) $(NFLAGS) $< -o $@

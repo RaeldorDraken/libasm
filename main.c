@@ -6,7 +6,7 @@
 /*   By: eros-gir <eros-gir@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 16:26:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2024/09/11 18:35:51 by eros-gir         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:01:18 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,12 @@ int main()
 	free(dup1);
 	free(dup2);
 	free(dup3);
+
+	//Test ft_strcmp
+	printf("Compare 'hello' and 'hello': %d\n", ft_strcmp("hello", "hello"));
+	printf("Compare '42' and '43': %d\n", ft_strcmp("42", "43"));
+	printf("Compare 'abc' and 'abcd': %d\n", ft_strcmp("abc", "abcd"));
+	printf("Compare 'apple' and 'apricot': %d\n", ft_strcmp("apple", "apricot"));
 
 	return 0;
 }

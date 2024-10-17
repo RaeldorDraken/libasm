@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eros-gir <eros-gir@student.42barcelona.    +#+  +:+       +#+         #
+#    By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/31 16:00:37 by eros-gir          #+#    #+#              #
-#    Updated: 2024/10/03 19:29:38 by eros-gir         ###   ########.fr        #
+#    Updated: 2024/10/17 12:06:20 by eros-gir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ CFLAGS =	-no-pie -Wall -Wextra -Werror
 %.o: %.s $(HDRS)
 	$(NASM) $(NFLAGS) $< -o $@
 
-$(DIRBONUS)%.o: $(DIRBONUS)%.s $(HDRSBONUS)
+$(DIRBONUS)%.o: $(DIRBONUS)%.s $(HDRSBONUS) 
 	$(NASM) $(NFLAGS) $< -o $@
 
 #Commands
@@ -55,13 +55,14 @@ $(NAME): $(OBJS)
 
 all: $(NAME)
 
-bonus: $(NAME) $(OBJSBONUS)
+bonus: $(NAME) $(OBJS) $(OBJSBONUS)
+	ar rcs $(NAME) $(OBJSBONUS)
 
 test: $(NAME) main.c
 	$(CC) $(CFLAGS) main.c $(NAME) -o testing
 
 test_bonus: $(NAME) $(OBJS) $(OBJSBONUS) main_bonus.c
-	$(CC) $(CFLAGS) main_bonus.c $(NAME) $(OBJSBONUS) -o testing_bonus
+	$(CC) $(CFLAGS) main_bonus.c $(NAME) $(OBJS) $(OBJSBONUS) -o testing_bonus
 
 clean:
 	rm -f $(OBJS) $(OBJSBONUS)

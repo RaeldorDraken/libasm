@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eros-gir <eros-gir@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 16:26:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2024/10/03 17:44:18 by eros-gir         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:56:12 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ int main()
 
 	//Test ft_strcmp
 	ft_write(1, "-----Testing ft_strcmp-----\n", 28);
-	printf("Compare 'hello' and 'hello': %d\n", ft_strcmp("hello", "hello"));
-	printf("Compare '42' and '43': %d\n", ft_strcmp("42", "43"));
-	printf("Compare 'abc' and 'abcd': %d\n", ft_strcmp("abc", "abcd"));
-	printf("Compare 'apple' and 'apricot': %d\n", ft_strcmp("apple", "apricot"));
+	printf("\tCompare 'hello' and 'hello': %d\n", ft_strcmp("hello", "hello"));
+	printf("\tCompare '42' and '43': %d\n", ft_strcmp("42", "43"));
+	printf("\tCompare 'abc' and 'abcd': %d\n", ft_strcmp("abc", "abcd"));
+	printf("\tCompare 'apple' and 'apricot': %d\n", ft_strcmp("apple", "apricot"));
 	ft_write(1, "\n", 1);
 
 	//Test ft_write

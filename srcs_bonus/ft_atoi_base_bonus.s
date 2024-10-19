@@ -4,64 +4,96 @@ section .text
 extern ft_strlen
 
 ft_atoi_base:
-    xor rax, rax
     xor rcx, rcx
     xor rdx, rdx
-    mov rbx, rsi
+    xor r8, r8
+    xor r9, r9
+    mov r10, 1
+    xor r11, r11
+    push r12
+    mov r12, 0
 
+    ; Check if input string or base is null
+    cmp rdi, 0x0
+    jz .error
+    cmp rsi, 0x0
+    jz .error
+
+    ; Get the length of the base using ft_strlen
+    push rdi
+    mov rdi, rsi 
     call ft_strlen
+    pop rdi
+    cmp rax, 2
+    jl .error
     mov r8, rax
 
-.next:
-    mov al, [rdi]
-    cmp al, ' '
-    je .skip_space
-    cmp al, '-'
-    je .negative
-    cmp al, '+'
-    je .positive
-    jmp .parse
+.check_spaces:
+    mov r11, 1
+    cmp BYTE [rdi + rcx], ' '
+    je .incr_rcx
+    cmp BYTE [rdi + rcx], 9
+    je .incr_rcx
+    cmp BYTE [rdi + rcx], 11
+    je .incr_rcx
+    jmp .check_sign
 
-.skip_space:
-    inc rdi
-    jmp .next
+.incr_rcx:
+    inc rcx
+    cmp r11, 1
+    je .check_spaces
+    cmp r11, 2
+    inc r12
+    je .check_sign
+
+.check_sign:
+    mov r11, 2
+    cmp BYTE [rdi + rcx], '+'
+    je .incr_rcx
+    cmp BYTE [rdi + rcx], '-'
+    je .negative
+    jmp .atoi_rdi
 
 .negative:
-    xor rdx, 1
-    inc rdi
-    jmp .next
-
-.positive:
-    inc rdi
-    jmp .next
-
-.parse:
-.loop:
-    mov al, [rdi]
-    test al, al
-    jz .done
-    mov rdi, rsi
-    mov rcx, 0
-
-.find_char:
-    cmp byte [rdi + rcx], al
-    je .char_found
+    inc r12
+    mov r10, -1
     inc rcx
-    cmp rcx, r8
-    jnz .find_char
-    jmp .done
+    jmp .check_sign
 
-.char_found:
-    mov rbx, rax
-    imul rax, r8
-    add rax, rcx
-    inc rdi
-    jmp .loop
+.atoi_rdi:
+    cmp r12, 1
+    jg .error
+    cmp BYTE [rdi + rcx], 0x0
+    je .end_atoi
 
-.done:
-    cmp rdx, 0
-    jz .return
-    neg rax
+.atoi_rsi:
+    cmp BYTE [rsi + rdx], 0x0
+    je .end_atoi
+    xor r11, r11
+    mov r11b, [rdi + rcx]
+    mov al, [rsi + rdx]
+    cmp r11b, al
+    je .calculate
+    inc rdx
+    jmp .atoi_rsi
 
-.return:
+.calculate:
+    imul r9, r8
+    add r9, rdx
+    inc rcx
+    mov rdx, 0
+    jmp .atoi_rdi
+
+.end_atoi:
+    mov rax, r9
+    imul rax, r10
+    jmp .end
+
+.end:
+    pop r12
+    ret
+
+.error:
+    pop r12
+    xor rax, rax
     ret

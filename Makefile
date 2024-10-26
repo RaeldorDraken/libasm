@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+         #
+#    By: eros-gir <eros-gir@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/31 16:00:37 by eros-gir          #+#    #+#              #
-#    Updated: 2024/10/17 12:06:20 by eros-gir         ###   ########.fr        #
+#    Updated: 2024/10/26 15:58:36 by eros-gir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,8 @@ OBJSBONUS = $(SRCSBONUS:.s=.o)
 NASM =	nasm
 NFLAGS =	-f elf64
 
-CC =	gcc
-CFLAGS =	-no-pie -Wall -Wextra -Werror
+CC =	cc
+CFLAGS = -Wall -Wextra -Werror
 
 %.o: %.s $(HDRS)
 	$(NASM) $(NFLAGS) $< -o $@
@@ -59,7 +59,7 @@ bonus: $(NAME) $(OBJS) $(OBJSBONUS)
 	ar rcs $(NAME) $(OBJSBONUS)
 
 test: $(NAME) main.c
-	$(CC) $(CFLAGS) main.c $(NAME) -o testing
+	$(CC) $(CFLAGS) main.c -L. -lasm -o testing
 
 test_bonus: $(NAME) $(OBJS) $(OBJSBONUS) main_bonus.c
 	$(CC) $(CFLAGS) main_bonus.c $(NAME) $(OBJS) $(OBJSBONUS) -o testing_bonus

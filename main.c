@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eros-gir <eros-gir@student.42barcel>       +#+  +:+       +#+        */
+/*   By: eros-gir <eros-gir@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 16:26:06 by eros-gir          #+#    #+#             */
-/*   Updated: 2024/10/17 11:56:12 by eros-gir         ###   ########.fr       */
+/*   Updated: 2024/10/26 16:01:34 by eros-gir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int main()
 	
 	//Test ft_read
 	ft_write(1, "-----Testing ft_read-----\n", 26);
-	str = "\nInput text next:\n";
+	str = "\tInput text next:\n";
 	ft_write(1, str, 18);
 	char	buff[100];
 	int		flag = ft_read(0, buff, 100);
